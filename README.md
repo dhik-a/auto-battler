@@ -24,7 +24,7 @@ Combat flow:
 4. Plays attack animation  
 5. Deals damage to opponent  
 6. Gauge resets → returns to IDLE  
-7. BattleManager checks win/lose condition
+7. BattleScene checks win/lose condition
 
 Future updates:
 - Skills
