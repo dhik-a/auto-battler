@@ -33,13 +33,15 @@ func _process(delta: float) -> void:
 			battleStateLabel.text = "Defeated..."
 	
 func _on_player_attack() -> void:
-	enemy.attacked()
+	enemy.attacked(player.status.strength)
 
 func _on_enemy_attack() -> void:
-	player.attacked()
+	player.attacked(enemy.status.strength)
 
 func _on_player_defeated() -> void:
 	battle_state = BattleState.LOST
+	enemy.victory_achieved()
 
 func _on_enemy_defeated() -> void:
 	battle_state = BattleState.VICTORY
+	player.victory_achieved()

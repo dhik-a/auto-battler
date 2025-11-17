@@ -4,8 +4,10 @@ extends Node
 enum State {
 	IDLE,
 	ATTACK,
+	DEFEND,
 	HURT,
-	DEAD
+	DEAD,
+	VICTORY
 }
 
 signal state_changed(new_state)

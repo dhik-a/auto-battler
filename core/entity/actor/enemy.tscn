@@ -1,12 +1,13 @@
-[gd_scene load_steps=39 format=3 uid="uid://buek38dy1s130"]
+[gd_scene load_steps=45 format=3 uid="uid://buek38dy1s130"]
 
-[ext_resource type="Script" uid="uid://cmh2vpxlk1ime" path="res://core/entity/enemy.gd" id="1_fk8bg"]
+[ext_resource type="Script" uid="uid://cmh2vpxlk1ime" path="res://core/entity/actor/enemy.gd" id="1_fk8bg"]
 [ext_resource type="Texture2D" uid="uid://co1yh55wu0sxu" path="res://asset/graphic/player/IDLE.png" id="2_fk8bg"]
 [ext_resource type="Texture2D" uid="uid://bcysi2yaudvmx" path="res://asset/graphic/player/ATTACK 1.png" id="2_rwcdn"]
 [ext_resource type="Texture2D" uid="uid://djpt0tgww8h1p" path="res://asset/graphic/player/DEATH.png" id="3_1sl83"]
 [ext_resource type="Texture2D" uid="uid://dqktfhusijbxl" path="res://asset/graphic/player/HURT.png" id="4_nib7i"]
 [ext_resource type="Script" uid="uid://bp4k6v64fwx0h" path="res://core/component/state_component.gd" id="4_w3ygr"]
 [ext_resource type="Script" uid="uid://qx1gagadsf40" path="res://core/component/status_component.gd" id="6_g1rx2"]
+[ext_resource type="Texture2D" uid="uid://cbckrexeanw27" path="res://asset/graphic/player/JUMP.png" id="6_hf8cd"]
 [ext_resource type="Script" uid="uid://culnf0rhrmgtf" path="res://core/component/turn_component.gd" id="7_rwcdn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sl83"]
@@ -125,6 +126,26 @@ region = Rect2(192, 0, 96, 84)
 atlas = ExtResource("4_nib7i")
 region = Rect2(288, 0, 96, 84)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcaso"]
+atlas = ExtResource("6_hf8cd")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_515aw"]
+atlas = ExtResource("6_hf8cd")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vs5r"]
+atlas = ExtResource("6_hf8cd")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jppv"]
+atlas = ExtResource("6_hf8cd")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwehj"]
+atlas = ExtResource("6_hf8cd")
+region = Rect2(384, 0, 96, 84)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qg6e7"]
 animations = [{
 "frames": [{
@@ -233,6 +254,26 @@ animations = [{
 "loop": false,
 "name": &"hurt",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcaso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_515aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vs5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jppv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwehj")
+}],
+"loop": true,
+"name": &"victory",
+"speed": 10.0
 }]
 
 [node name="Enemy" type="Node2D"]
@@ -241,8 +282,10 @@ script = ExtResource("1_fk8bg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qg6e7")
-animation = &"dead"
+animation = &"victory"
 autoplay = "default"
+frame = 2
+frame_progress = 0.39824393
 flip_h = true
 
 [node name="StatusComponent" type="Node" parent="."]

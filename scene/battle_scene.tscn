@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://doebfw618hxjh"]
 
 [ext_resource type="Script" uid="uid://bj7677s38imya" path="res://scene/battle_scene.gd" id="1_2c1i2"]
-[ext_resource type="PackedScene" uid="uid://djf1eab0ju0l0" path="res://core/entity/player.tscn" id="1_6i1qh"]
-[ext_resource type="PackedScene" uid="uid://buek38dy1s130" path="res://core/entity/enemy.tscn" id="2_ttnhc"]
+[ext_resource type="PackedScene" uid="uid://djf1eab0ju0l0" path="res://core/entity/actor/player.tscn" id="1_6i1qh"]
+[ext_resource type="PackedScene" uid="uid://buek38dy1s130" path="res://core/entity/actor/enemy.tscn" id="2_ttnhc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6i1qh"]
 bg_color = Color(1, 1, 1, 1)

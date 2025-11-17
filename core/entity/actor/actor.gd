@@ -4,10 +4,10 @@ extends Node2D
 @export var turn_gauge_bar : ProgressBar
 @export var health_label : RichTextLabel
 
-@onready var status = $StatusComponent
-@onready var turn = $TurnComponent
-@onready var state = $StateComponent
-@onready var sprite = $AnimatedSprite2D
+@onready var status : StatusComponent = $StatusComponent
+@onready var turn : TurnComponent = $TurnComponent
+@onready var state : StateComponent = $StateComponent
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 signal attacking
 signal is_dead
@@ -69,6 +69,8 @@ func _on_state_changed(new_state) -> void:
 			sprite.play("hurt")
 		state.State.DEAD:
 			sprite.play("dead")
+		state.State.VICTORY:
+			sprite.play("victory")
 
 ### ----------------------------------------------
 ### Animation / Sprite Modification
@@ -79,11 +81,16 @@ func _on_anim_finished() -> void:
 		turn.reset_gauge()
 	if state.current_state != state.State.DEAD:
 		state.next_state()
-		
+
 ### ----------------------------------------------
 ### Public Functions
 ### ----------------------------------------------
 
-func attacked() -> void:
+func attacked(attack_strength : int) -> void:
 	state.set_state(state.State.HURT)
-	status.take_damage(10)
+	var damage = status.calculate_damage(attack_strength)
+	status.reduce_health(damage)
+	
+func victory_achieved() -> void:
+	turn.reset_gauge()
+	state.set_state(state.State.VICTORY)
